@@ -1,3 +1,5 @@
+package com.Utils;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -5,36 +7,41 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class ConnectionManager {
+public class ConnectionManager
+{
     //this is a singleton - meaning when we call this instance we are
-    //always referring to the same instance of this ConnectionManager class
+    //always referring to the same instance of this com.Utils.ConnectionManager class
     public static ConnectionManager connectionManager;
 
     //this is our Connection instance
     public static Connection connection;
 
     //this is a private constructor ( a special method )
-    private ConnectionManager() {
+    private ConnectionManager()
+    {
 
     }
 
     //private get method to initialize the connectionManager instance
 
-    private ConnectionManager getConnectionManager() {
+    private ConnectionManager getConnectionManager()
+    {
         if (connectionManager == null) {
             connectionManager = new ConnectionManager();
         }
         return connectionManager;
     }
 
-    public static Connection getConnection() {
+    public static Connection getConnection()
+    {
         if (connection == null) {
             connection = connect();
         }
         return connection;
     }
 
-    public static Connection connect() {
+    private static Connection connect()
+    {
         try
         {
             //this creates a new properties list with no values
